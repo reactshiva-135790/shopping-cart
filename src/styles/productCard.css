@@ -1,0 +1,44 @@
+/* productCard.css */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Media Queries for Responsiveness */
+
+@media screen and (min-width: 768px) {
+    .product-card {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .product-image {
+        max-width: 150px;
+        margin-right: 20px;
+    }
+}
