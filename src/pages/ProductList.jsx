@@ -4,6 +4,7 @@ import { GrCart, GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import "../styles/productList.css";
 import { api } from "../http/axios";
 import ProductListCardComponent from "../components/ProductListCardComponent";
+import Loader from "../shimmer/Loader";
 
 
 const ProductList = () => {
@@ -66,7 +67,9 @@ const ProductList = () => {
                 </div>
                 <div className="main cards">
                     {isLoading ? (
-                        <p>Loading...</p>
+                        <div className="d-flex justify-content-center">
+                         <Loader />
+                        </div>
                     ) : (
                         productLists.map((product) => (
                             <ProductListCardComponent product={product} />

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import ProductCardCom from "../components/ProductCard"; // Import the new component
 import { api } from "../http/axios";
+import Loader from "../shimmer/Loader";
 
 const ProductCard = () => {
     const { id } = useParams();
@@ -19,7 +20,11 @@ const ProductCard = () => {
     }, [id, products]);
 
     if (!product) {
-        return <div>Loading...</div>;
+        return (
+            <div className="d-flex justify-content-center">
+                <Loader />
+            </div>
+        )
     }
 
     return <ProductCardCom product={product} />; // Pass the product to the new component
