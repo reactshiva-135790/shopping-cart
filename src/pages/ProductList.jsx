@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
-import { GrCart, GrFormAdd, GrFormSubtract } from "react-icons/gr";
+// import { GrCart, GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import "../styles/productList.css";
 import { api } from "../http/axios";
 import ProductListCardComponent from "../components/ProductListCardComponent";
 import { Loader } from "../fileExport";
-
+import { useSelector, useDispatch } from 'react-redux'
+import { addProduct, removeProduct } from "../store/cartSlice"
+import Cart from "../components/Cart";
+import Category from "./Category";
 
 const ProductList = () => {
+    const countValue = useSelector((state) => state.cart.initialState)
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(true); // Add loading state
     const productLists = useFetch(api);
     const [cartCount, setCartCount] = useState(0);
@@ -62,13 +67,17 @@ const ProductList = () => {
                 <div className="d-flex justify-content-between mt-2">
                     <div>Product List</div>
                     <div>
-                        <GrCart />   <GrFormSubtract onClick={() => decreaseCartCount()} /> {cartCount} <GrFormAdd onClick={() => increaseCartCount()} />
+                        <div className="product-list-page">
+                            <Category />
+                            <Cart cartValue={countValue} />
+                        </div>
+                        {/* <GrCart />   <GrFormSubtract onClick={() => decreaseCartCount()} /> {countValue} <GrFormAdd onClick={() => increaseCartCount()} /> */}
                     </div>
                 </div>
                 <div className="main cards">
                     {isLoading ? (
                         <div className="d-flex justify-content-center">
-                         <Loader />
+                            <Loader />
                         </div>
                     ) : (
                         productLists.map((product) => (
