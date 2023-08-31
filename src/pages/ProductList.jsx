@@ -4,7 +4,7 @@ import { GrCart, GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import "../styles/productList.css";
 import { api } from "../http/axios";
 import ProductListCardComponent from "../components/ProductListCardComponent";
-import Loader from "../shimmer/Loader";
+import { Loader } from "../fileExport";
 
 
 const ProductList = () => {

@@ -1,8 +1,4 @@
-import { useState } from 'react'
-import './App.css'
-
-import Navbar from "./components/Navbar"
-import RoutePage from "./routes/RoutePage"
+import {Navbar,RoutePage} from "./fileExport"
 
 function App() {
 
